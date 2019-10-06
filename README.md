@@ -1,2 +1,2 @@
 # E-Voting
-EE465 Course Project
+DEcentralized Electronic Voting using Linkable Ring Signatures
