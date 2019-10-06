@@ -1,2 +1,2 @@
 # E-Voting
-DEcentralized Electronic Voting using Linkable Ring Signatures
+Decentralized Electronic Voting using Linkable Ring Signatures
