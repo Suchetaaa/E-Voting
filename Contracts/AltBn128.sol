@@ -1,4 +1,4 @@
-pragma solidity >=0.5.0 <0.6.0;
+pragma solidity >=0.4.0 <0.6.0;
 
 /** 
  * Heavily referenced from https://github.com/ethereum/py_ecc/blob/master/py_ecc/bn128/bn128_curve.py
