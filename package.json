@@ -1,0 +1,25 @@
+{
+  "name": "anonymous-e-voting",
+  "version": "1.0.0",
+  "description": "Anonymous EVoting",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dexter-morgan/Anonymous-e-voting.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dexter-morgan/Anonymous-e-voting/issues"
+  },
+  "homepage": "https://github.com/dexter-morgan/Anonymous-e-voting#readme",
+  "dependencies": {
+    "truffle-assertions": "^0.9.1"
+  }
+}
