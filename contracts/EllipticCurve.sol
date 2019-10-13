@@ -93,15 +93,23 @@ library EllipticCurve {
     uint256 _aa,
     uint256 _bb,
     uint256 _pp)
-  public pure returns (uint256)
+  public pure returns (uint256, uint256)
   {
-    // x^3 + ax + b
-    uint256 y2 = addmod(mulmod(_x, mulmod(_x, _x, _pp), _pp), addmod(mulmod(_x, _aa, _pp), _bb, _pp), _pp);
-    y2 = expMod(y2, (_pp + 1) / 4, _pp);
-    // uint256 cmp = yBit ^ y_ & 1;
-    uint256 y = (y2 + _prefix) % 2 == 0 ? y2 : _pp - y2;
+    uint256 beta = mulmod(_x, _x, _pp);
+    beta = mulmod(beta, _x, _pp);
+    beta = addmod(beta, 7, _pp);
 
-    return y;
+    uint256 y = expMod(beta, _aa, _pp);
+
+    // require(beta == mulmod(y, y, P), "Invalid x for evalCurve");
+    return (beta, y);
+    // // x^3 + ax + b
+    // uint256 y2 = addmod(mulmod(_x, mulmod(_x, _x, _pp), _pp), addmod(mulmod(_x, _aa, _pp), _bb, _pp), _pp);
+    // y2 = expMod(y2, (_pp + 1) / 4, _pp);
+    // // uint256 cmp = yBit ^ y_ & 1;
+    // uint256 y = (y2 + _prefix) % 2 == 0 ? y2 : _pp - y2;
+
+    // return y;
   }
 
   /// @dev Check whether point (x,y) is on curve defined by a, b, and _pp.

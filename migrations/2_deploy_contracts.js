@@ -6,9 +6,9 @@ const secp256k1 = artifacts.require("secp256k1");
 
 module.exports = function(deployer) {
 
-	deployer.deploy(AltBn128);
+	// deployer.deploy(AltBn128);
 	deployer.deploy(EllipticCurve);
-	deployer.link(AltBn128, LSAG);
+	// deployer.link(AltBn128, LSAG);
 	deployer.link(EllipticCurve, secp256k1);
 	deployer.deploy(secp256k1);
 	deployer.link(secp256k1, LSAG);

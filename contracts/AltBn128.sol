@@ -5,33 +5,33 @@ pragma solidity >=0.4.0 <0.6.0;
 */
 
 library AltBn128 {
-    // uint256 constant public G1x = uint256(0x79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798);
-    // uint256 constant public G1y = uint256(0x483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8);
-
-    // // Number of elements in the field (often called `q`)
-    // // n = n(u) = 36u^4 + 36u^3 + 18u^2 + 6u + 1
-    // uint256 constant public N = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141;
-
-    // // p = p(u) = 36u^4 + 36u^3 + 24u^2 + 6u + 1
-    // // Field Order
-    // uint256 constant public P = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F;
-
-    // // (p+1) / 4
-    // uint256 constant public A = 0x0;
-
-    uint256 constant public G1x = uint256(0x01);
-    uint256 constant public G1y = uint256(0x02);
+    uint256 constant public G1x = uint256(0x79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798);
+    uint256 constant public G1y = uint256(0x483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8);
 
     // Number of elements in the field (often called `q`)
     // n = n(u) = 36u^4 + 36u^3 + 18u^2 + 6u + 1
-    uint256 constant public N = 0x30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f0000001;
+    uint256 constant public N = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141;
 
     // p = p(u) = 36u^4 + 36u^3 + 24u^2 + 6u + 1
     // Field Order
-    uint256 constant public P = 0x30644e72e131a029b85045b68181585d97816a916871ca8d3c208c16d87cfd47;
+    uint256 constant public P = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F;
 
     // (p+1) / 4
-    uint256 constant public A = 0xc19139cb84c680a6e14116da060561765e05aa45a1c72a34f082305b61f3f52;
+    uint256 constant public A = 0x0;
+
+    // uint256 constant public G1x = uint256(0x01);
+    // uint256 constant public G1y = uint256(0x02);
+
+    // // Number of elements in the field (often called `q`)
+    // // n = n(u) = 36u^4 + 36u^3 + 18u^2 + 6u + 1
+    // uint256 constant public N = 0x30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f0000001;
+
+    // // p = p(u) = 36u^4 + 36u^3 + 24u^2 + 6u + 1
+    // // Field Order
+    // uint256 constant public P = 0x30644e72e131a029b85045b68181585d97816a916871ca8d3c208c16d87cfd47;
+
+    // // (p+1) / 4
+    // uint256 constant public A = 0xc19139cb84c680a6e14116da060561765e05aa45a1c72a34f082305b61f3f52;
 
     /* ECC Functions */
     function ecAdd(uint256[2] memory p0, uint256[2] memory p1) public view

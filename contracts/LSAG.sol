@@ -1,6 +1,6 @@
 pragma solidity >=0.4.0 <0.6.0;
 
-import "./AltBn128.sol";
+// import "./AltBn128.sol";
 import "./secp256k1.sol";
 
 /*
@@ -23,15 +23,17 @@ library LSAG {
         uint256 x = _x;
         uint256 y;
         uint256 beta;
+        uint8 prefix = 0x0;
 
         while (true) {
-            (beta, y) = AltBn128.evalCurve(x);
 
-            if (AltBn128.onCurveBeta(beta, y)) {
+            (beta, y) = secp256k1.map_curve(prefix, x);
+
+            if (secp256k1.onCurveBeta(beta, y)) {
                 return [x, y];
             }
 
-            x = AltBn128.addmodn(x, 1);
+            x = secp256k1.addmodn(x, 1);
         }
     }
 
@@ -42,7 +44,7 @@ library LSAG {
     function H1(bytes memory b) public pure
         returns (uint256)
     {   
-        return AltBn128.modn(uint256(keccak256(b)));
+        return secp256k1.modn(uint256(keccak256(b)));
     }
 
     /**

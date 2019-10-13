@@ -37,7 +37,7 @@ contract("EVoting", async function(accounts){
     
             receipt = await contractInstance.setCommon(accounts[0], {from:accounts[0]});
             console.log("receipt for setting common address : \n", receipt);
-            voteCount = await contractInstance.vote.call((message), '0x16aa89ee28eb2cc154d4353c5d8a4e18126c23814a0df840a1564982c226a0bf', keyImage, s, pub_keys, {from: accounts[0], gas:800000000});
+            voteCount = await contractInstance.vote.call((message), '0x16aa89ee28eb2cc154d4353c5d8a4e18126c23814a0df840a1564982c226a0bf', keyImage, s, pub_keys, {from: accounts[0], gas:80000000000});
             //var tx = contractInstance.addNewItem(name, price, {from: itemSeller});
             // console.log(itemID.toNumber())
             //var res = await contractInstance.getItem.call(itemID.toNumber())

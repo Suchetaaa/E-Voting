@@ -15,6 +15,7 @@ library secp256k1 {
   uint256 constant AA = 0;
   uint256 constant BB = 7;
   uint256 constant PP = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F;
+  uint256 constant N = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141;
 
   /// @dev Public Key derivation from private key
   /// @param privKey The private key
@@ -59,6 +60,37 @@ library secp256k1 {
       PP
     );
   }
+
+  function map_curve(uint8 prefix, uint256 x) public pure returns(uint256 beta, uint256 y) {
+    (beta, y) = EllipticCurve.deriveY(
+      prefix,
+      x, 
+      AA, 
+      BB, 
+      PP
+    );
+    
+  }
+
+  function onCurveBeta(uint256 beta, uint256 y) public pure returns(bool) {
+    return beta == mulmod(y, y, PP);
+  }
+
+  function addmodn(uint256 x, uint256 n) public pure returns (uint256) {
+    return addmod(x, n, N);
+  }
+
+  function modn(uint256 x) public pure returns (uint256) {
+    return x % N;
+  }
+
+
+
+
+
+
+
+
 
 
 }
