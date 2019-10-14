@@ -116,8 +116,8 @@ def verify_ring_signature(message, y, c_0, s, Y, G=SECP256k1.generator, hash_fun
 
     for i in range(n):
         z_1 = (G * s[i]) + (y[i] * c[i])
-        print (type(z_1).x)
-        print (z_1)
+        # print (type(z_1).x)
+        # print (z_1)
         z_2 = (H * s[i]) + (Y * c[i])
 
         if i < n - 1:
@@ -349,7 +349,7 @@ def export_signature_javascript(y, message, signature, foler_name='./data', file
 
 
 def main():
-    number_participants = 10
+    number_participants = 3
 
     x = [ randrange(SECP256k1.order) for i in range(number_participants)]
     y = list(map(lambda xi: SECP256k1.generator * xi, x))
@@ -358,8 +358,10 @@ def main():
     i = 2
     signature = ring_signature(x[i], i, message, y)
 
-    print (y)
+    for i in range(0,number_participants):
+        print (y[i])
     print (signature)
+    print (signature[2])
 
     assert(verify_ring_signature(message, y, *signature))
 

@@ -32,7 +32,7 @@ contract EVoting {
     constructor(/*uint8 _proposals, address common_address, uint256[2][] memory _pubkeys, uint256 num_members*/) public {
         chairperson = msg.sender;
         voters[chairperson].weight = 1;
-        proposals.length = 10;
+        proposals.length = 3;
         // for (uint i = 0; i < num_members; i++) {
         //     pub_keys.push(_pubkeys[i]);
         // }

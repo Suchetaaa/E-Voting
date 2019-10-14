@@ -99,7 +99,7 @@ library EllipticCurve {
     beta = mulmod(beta, _x, _pp);
     beta = addmod(beta, 7, _pp);
 
-    uint256 y = expMod(beta, _aa, _pp);
+    uint256 y = expMod(beta, (_pp + 1) / 4, _pp);
 
     // require(beta == mulmod(y, y, P), "Invalid x for evalCurve");
     return (beta, y);

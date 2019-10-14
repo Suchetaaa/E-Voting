@@ -77,11 +77,11 @@ library secp256k1 {
   }
 
   function addmodn(uint256 x, uint256 n) public pure returns (uint256) {
-    return addmod(x, n, N);
+    return addmod(x, n, PP);
   }
 
   function modn(uint256 x) public pure returns (uint256) {
-    return x % N;
+    return x % PP;
   }
 
 

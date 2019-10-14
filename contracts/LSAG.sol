@@ -180,6 +180,7 @@ library LSAG {
 
         uint256[2] memory h = H2(hBytes);
 
+
         // Step 2
         uint256[2] memory z_1;
         uint256[2] memory z_2;
@@ -187,8 +188,11 @@ library LSAG {
 
         for (i = 0; i < publicKeys.length; i++) {
 
+
             z_1 = ringCalcZ1(publicKeys[i], c, s[i]);
             z_2 = ringCalcZ2(keyImage, h, s[i], c);
+
+
 
             if (i != publicKeys.length - 1) {
                 c = H1(
@@ -204,6 +208,8 @@ library LSAG {
             }
         }
 
+
+
         return c0 == H1(
             abi.encodePacked(
                 hBytes,
@@ -213,5 +219,6 @@ library LSAG {
                 z_2
             )
         );
+
     }
 }
