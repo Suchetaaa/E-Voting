@@ -1,7 +1,6 @@
 pragma solidity >=0.4.0 <0.6.0;
 
-// import "./AltBn128.sol";
-import "./secp256k1.sol";
+import "./AltBn128.sol";
 
 /*
 Linkable Spontaneous Anonymous Groups
@@ -9,7 +8,7 @@ Linkable Spontaneous Anonymous Groups
 https://eprint.iacr.org/2004/027.pdf
 */
 
-library LSAG {
+library LSAG_original {
     // abi.encodePacked is the "concat" or "serialization"
     // of all supplied arguments into one long bytes value
     // i.e. abi.encodePacked :: [a] -> bytes
@@ -23,24 +22,15 @@ library LSAG {
         uint256 x = _x;
         uint256 y;
         uint256 beta;
-        uint8 prefix = 0x0;
-
-        if (_x%2 == 0) {
-            prefix = 0x02;
-        }
-        if (_x%2 == 1) {
-            prefix = 0x03;
-        }
 
         while (true) {
+            (beta, y) = AltBn128.evalCurve(x);
 
-            (beta, y) = secp256k1.map_curve(prefix, x);
-
-            if (secp256k1.onCurve(x, y)) {
+            if (AltBn128.onCurveBeta(beta, y)) {
                 return [x, y];
             }
 
-            x = secp256k1.addmodn(x, 1);
+            x = AltBn128.addmodn(x, 1);
         }
     }
 
@@ -50,8 +40,8 @@ library LSAG {
     */
     function H1(bytes memory b) public pure
         returns (uint256)
-    {   
-        return secp256k1.modn(uint256(keccak256(b)));
+    {
+        return AltBn128.modn(uint256(keccak256(b)));
     }
 
     /**
@@ -75,36 +65,10 @@ library LSAG {
     ) public view
         returns (uint256[2] memory)
     {
-
-        // return AltBn128.ecAdd(
-        //     AltBn128.ecMulG(s),
-        //     AltBn128.ecMul(pubKey, c)
-        // );
-
-        uint256[2] memory output;
-        uint256[2] memory p1;
-        uint256[2] memory p2;
-        uint256 x;
-        uint256 y; 
-
-        (x, y) = secp256k1.ecMultG(s);
-
-        p1[0] = x;
-        p1[1] = y;
-
-        (x, y) = secp256k1.ecMult(pubKey, c);
-
-        p2[0] = x;
-        p2[1] = y;
-
-        (x, y) = secp256k1.ecAddd(
-            p1,
-            p2
+        return AltBn128.ecAdd(
+            AltBn128.ecMulG(s),
+            AltBn128.ecMul(pubKey, c)
         );
-
-        output[0] = x;
-        output[1] = y;
-        return output;
     }
 
     /**
@@ -119,35 +83,10 @@ library LSAG {
     ) public view
         returns (uint256[2] memory)
     {
-        // return AltBn128.ecAdd(
-        //     AltBn128.ecMul(h, s),
-        //     AltBn128.ecMul(keyImage, c)
-        // );
-
-        uint256[2] memory output;
-        uint256[2] memory p1;
-        uint256[2] memory p2;
-        uint256 x;
-        uint256 y; 
-
-        (x, y) = secp256k1.ecMult(h, s);
-
-        p1[0] = x;
-        p1[1] = y;
-
-        (x, y) = secp256k1.ecMult(keyImage, c);
-
-        p2[0] = x;
-        p2[1] = y;
-
-        (x, y) = secp256k1.ecAddd(
-            p1,
-            p2
+        return AltBn128.ecAdd(
+            AltBn128.ecMul(h, s),
+            AltBn128.ecMul(keyImage, c)
         );
-
-        output[0] = x;
-        output[1] = y;
-        return output;
     }
 
 
@@ -164,11 +103,8 @@ library LSAG {
     ) public view
         returns (bool)
     {
-        
-        
         require(publicKeys.length >= 2, "Signature size too small");
         require(publicKeys.length == s.length, "Signature sizes do not match!");
-
 
         uint256 c = c0;
         uint256 i = 0;
@@ -184,9 +120,7 @@ library LSAG {
             );
         }
 
-
         uint256[2] memory h = H2(hBytes);
-
 
         // Step 2
         uint256[2] memory z_1;
@@ -194,12 +128,9 @@ library LSAG {
 
 
         for (i = 0; i < publicKeys.length; i++) {
-
-
             z_1 = ringCalcZ1(publicKeys[i], c, s[i]);
             z_2 = ringCalcZ2(keyImage, h, s[i], c);
-
-
+            require(1==0, "Working till here");
 
             if (i != publicKeys.length - 1) {
                 c = H1(
@@ -211,10 +142,8 @@ library LSAG {
                         z_2
                     )
                 );
-
             }
         }
-
 
 
         return c0 == H1(
@@ -226,6 +155,5 @@ library LSAG {
                 z_2
             )
         );
-
     }
 }

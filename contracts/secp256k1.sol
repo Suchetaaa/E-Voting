@@ -61,8 +61,8 @@ library secp256k1 {
     );
   }
 
-  function map_curve(uint8 prefix, uint256 x) public pure returns(uint256 beta, uint256 y) {
-    (beta, y) = EllipticCurve.deriveY(
+  function map_curve(uint8 prefix, uint256 x) public pure returns(uint256 beta, uint256 y3) {
+    (beta, y3) = EllipticCurve.deriveY(
       prefix,
       x, 
       AA, 
@@ -77,11 +77,22 @@ library secp256k1 {
   }
 
   function addmodn(uint256 x, uint256 n) public pure returns (uint256) {
-    return addmod(x, n, PP);
+    return addmod(x, n, N);
   }
 
   function modn(uint256 x) public pure returns (uint256) {
-    return x % PP;
+    return x % N;
+  }
+
+  function onCurve(uint256 x, uint256 y) public pure returns (bool b) {
+    b = EllipticCurve.isOnCurve(
+      x,
+      y,
+      AA,
+      BB,
+      PP
+    );
+ 
   }
 
 

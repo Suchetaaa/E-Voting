@@ -3,11 +3,14 @@ const AltBn128 = artifacts.require("AltBn128");
 const LSAG = artifacts.require("LSAG");
 const EllipticCurve = artifacts.require("EllipticCurve");
 const secp256k1 = artifacts.require("secp256k1");
+const LSAG_original = artifacts.require("LSAG_original");
 
 module.exports = function(deployer) {
 
 	// deployer.deploy(AltBn128);
 	deployer.deploy(EllipticCurve);
+	// deployer.link(AltBn128, LSAG_original);
+	// deployer.deploy(LSAG_original);
 	// deployer.link(AltBn128, LSAG);
 	deployer.link(EllipticCurve, secp256k1);
 	deployer.deploy(secp256k1);

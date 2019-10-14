@@ -1,6 +1,7 @@
 pragma solidity >=0.4.0 <0.6.0;
 // pragma experimental ABIEncoderV2;
 import "./LSAG.sol";
+// import "./LSAG_original.sol";
 
 contract EVoting {
 
@@ -83,6 +84,7 @@ contract EVoting {
     
     function LSAG_verify(bytes memory message, uint256 c0, uint256[2] memory keyImage, uint256[] memory s, uint256[2][] memory publicKeys) internal returns (bool) {
         bool status = LSAG.verify(message, c0, keyImage, s, publicKeys);
+        return status;
         
         if (!status) return false;
         for(uint i=0; i<I_array.length; i++) {

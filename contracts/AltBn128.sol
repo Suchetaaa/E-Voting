@@ -10,11 +10,11 @@ library AltBn128 {
 
     // Number of elements in the field (often called `q`)
     // n = n(u) = 36u^4 + 36u^3 + 18u^2 + 6u + 1
-    uint256 constant public N = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F;
+    uint256 constant public N = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141;
 
     // p = p(u) = 36u^4 + 36u^3 + 24u^2 + 6u + 1
     // Field Order
-    uint256 constant public P = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141;
+    uint256 constant public P = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F;
 
     // (p+1) / 4
     uint256 constant public A = 0x0;
@@ -119,7 +119,7 @@ library AltBn128 {
     {
         uint256 beta = mulmod(x, x, P);
         beta = mulmod(beta, x, P);
-        beta = addmod(beta, 3, P);
+        beta = addmod(beta, 7, P);
 
         return onCurveBeta(beta, y);
     }
@@ -138,9 +138,9 @@ library AltBn128 {
     {
         uint256 beta = mulmod(x, x, P);
         beta = mulmod(beta, x, P);
-        beta = addmod(beta, 3, P);
+        beta = addmod(beta, 7, P);
 
-        uint256 y = powmod(beta, A, P);
+        uint256 y = powmod(beta, (P + 1)/4, P);
 
         // require(beta == mulmod(y, y, P), "Invalid x for evalCurve");
         return (beta, y);
