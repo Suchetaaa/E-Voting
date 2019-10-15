@@ -298,14 +298,22 @@ def export_signature(y, message, signature, foler_name='./data', file_name='sign
     S = ''.join(map(lambda x: str(x) + ',', signature[1]))[:-1]
     Y = stringify_point(signature[2])
 
-    dump = '{}\n'.format(signature[0])
+    dump = '{}\n'.format("Here is your signature:")
+    dump += '{}'.format("c0 = ")
+    dump += '{}\n'.format(signature[0])
+    dump += '{}'.format("S array = ")
     dump += '{}\n'.format(S)
+    dump += '{}'.format("KeyImage = ")
     dump += '{}\n'.format(Y)
 
     arch.write(dump)
 
+    data = '\n'
+    data += "You will be voting for proposal {}\n".format(message)
+    data += '\n'
     pub_keys = ''.join(map(lambda yi: stringify_point(yi) + ';', y))[:-1]
-    data = '{}\n'.format(''.join([ '{},'.format(m) for m in message])[:-1])
+    # data = '{}\n'.format(''.join([ '{},'.format(m) for m in str(message)])[:-1])
+    data += '{}'.format("Public Keys given = ")
     data += '{}\n,'.format(pub_keys)[:-1]
 
     arch.write(data)
