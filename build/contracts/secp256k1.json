@@ -6538,10 +6538,18 @@
       },
       "address": "0x37570e4a7924344C1Cd3a513517F28b776875112",
       "transactionHash": "0x215a4eb819c4d603cc3652476a85de3ef11625ff3b44737da48bb13a90abddf6"
+    },
+    "1571126047153": {
+      "events": {},
+      "links": {
+        "EllipticCurve": "0x2e26DeA19c042648d9559e3d31bf84661Bbb2160"
+      },
+      "address": "0x742Be2B0Cd0d6F15E18953924f30Fe014EFf2CcB",
+      "transactionHash": "0xd83b12f3f75fab39a529d5a627c663f4da8e209a8b049af2ed63801cad5aaa2b"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-14T21:46:19.305Z",
+  "updatedAt": "2019-10-15T13:02:43.097Z",
   "devdoc": {
     "author": "Witnet Foundation",
     "methods": {

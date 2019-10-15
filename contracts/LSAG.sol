@@ -51,7 +51,10 @@ library LSAG {
     function H1(bytes memory b) public pure
         returns (uint256)
     {   
-        return secp256k1.modn(uint256(keccak256(b)));
+        uint256 a = 11631197716381341491910650601086533899062258680921704624436296724004857123675;
+        // return a;
+        // require(uint256(sha256(b)) == 106245785169166674832827933205895298349539914377793708839139737261608903456171, "H1 not working");
+        return secp256k1.modn(uint256(sha256(b)));
     }
 
     /**
@@ -61,6 +64,7 @@ library LSAG {
     function H2(bytes memory b) public view
         returns (uint256[2] memory)
     {
+
         return intToPoint(H1(b));
     }
 
@@ -187,6 +191,9 @@ library LSAG {
 
         uint256[2] memory h = H2(hBytes);
 
+        require(h[0] ==106245785169166674832827933205895298349539914377793708839139737261608903456172, "H[0] is not matching");
+        require(h[1] == 38130597350437976482118320406716909458312114499366885177464997577442444961143, "H[1] is not matching");
+
 
         // Step 2
         uint256[2] memory z_1;
@@ -198,6 +205,10 @@ library LSAG {
 
             z_1 = ringCalcZ1(publicKeys[i], c, s[i]);
             z_2 = ringCalcZ2(keyImage, h, s[i], c);
+            // require(z_1[0] == 104603062327150847596075863885237206448711583172763894617559229948636949816387, "z_1[0] me problem hai");
+            // require(z_1[1] == 3877022914943913174973231854694363839599317059260525512126388493689905288930, "z_1[1] me problem hai");
+            // require(z_2[0] == 25157251625505657634097849792771000312472027419867594537390547422728421981871, "z_2[0] me problem hai");
+            // require(z_2[1] == 69948776311331987906694682752320754045742553606829709747780937321352532856962, "z_2[1] me problem hai");
 
 
 
@@ -211,11 +222,15 @@ library LSAG {
                         z_2
                     )
                 );
+            // require(c == 16357890663710956355361729657157350713590481508068147386100790592692504508184, "c me pain hai");
 
             }
         }
 
 
+
+        // uint256 cmp = 410110715044222895326505139779546287454003754781594894690956035788336730330;
+        // return c0 == cmp;
 
         return c0 == H1(
             abi.encodePacked(

@@ -20,7 +20,7 @@ from ecdsa import numbertheory
 from eth_abi.packed import encode_single_packed, encode_abi_packed
 
 
-def ring_signature(siging_key, key_idx, M, y, G=SECP256k1.generator, hash_func=hashlib.sha3_256):
+def ring_signature(siging_key, key_idx, M, y, G=SECP256k1.generator, hash_func=hashlib.sha256):
     """
         Generates a ring signature for a message given a specific set of
         public keys and a signing key belonging to one of the public keys
@@ -64,6 +64,7 @@ def ring_signature(siging_key, key_idx, M, y, G=SECP256k1.generator, hash_func=h
 
     # STEP 2
     u = randrange(SECP256k1.order)
+
     c[(key_idx + 1) % n] = H1([y, Y, M, G * u, H * u], hash_func=hash_func)
 
     # STEP 3
@@ -81,7 +82,7 @@ def ring_signature(siging_key, key_idx, M, y, G=SECP256k1.generator, hash_func=h
     return (c[0], s, Y)
 
 
-def verify_ring_signature(message, y, c_0, s, Y, G=SECP256k1.generator, hash_func=hashlib.sha3_256):
+def verify_ring_signature(message, y, c_0, s, Y, G=SECP256k1.generator, hash_func=hashlib.sha256):
     """
         Verifies if a valid signature was made by a key inside a set of keys.
 
@@ -113,15 +114,18 @@ def verify_ring_signature(message, y, c_0, s, Y, G=SECP256k1.generator, hash_fun
     c = [c_0] + [0] * (n - 1)
 
     H = H2(y, hash_func=hash_func)
+    print ("H=",H)
 
     for i in range(n):
         z_1 = (G * s[i]) + (y[i] * c[i])
-        # print (type(z_1).x)
-        # print (z_1)
         z_2 = (H * s[i]) + (Y * c[i])
+
+        print ("z_1=",z_1)
+        print ("z_2=",z_2)
 
         if i < n - 1:
             c[i + 1] = H1([y, Y, message, z_1, z_2], hash_func=hash_func)
+            print ("c=",c[i+1])
         else:
             return c_0 == H1([y, Y, message, z_1, z_2], hash_func=hash_func)
 
@@ -162,7 +166,7 @@ def map_to_curve(x, P=curve_secp256k1.p()):
     return ecdsa.ellipticcurve.Point(curve_secp256k1, x, y)
 
 
-def H1(msg, hash_func=hashlib.sha3_256):
+def H1(msg, hash_func=hashlib.sha256):
     """
         Return an integer representation of the hash of a message. The
         message can be a list of messages that are concatenated with the
@@ -179,10 +183,12 @@ def H1(msg, hash_func=hashlib.sha3_256):
         -------
             Integer representation of hexadecimal digest from hash function.
     """
+
+    print ("H1=",int('0x'+ hash_func(concat(msg)).hexdigest(), 16))
     return int('0x'+ hash_func(concat(msg)).hexdigest(), 16)
 
 
-def H2(msg, hash_func=hashlib.sha3_256):
+def H2(msg, hash_func=hashlib.sha256):
     """
         Hashes a message into an elliptic curve point.
 
@@ -349,19 +355,21 @@ def export_signature_javascript(y, message, signature, foler_name='./data', file
 
 
 def main():
-    number_participants = 3
+    number_participants = 2
 
-    x = [ randrange(SECP256k1.order) for i in range(number_participants)]
+    x = [66423199147571491159097558610794523613615815347258629248005690914378515129410,90095073239896489783244129123637431383711813588417303772730231172374353279628]
+    # x = [ randrange(SECP256k1.order) for i in range(number_participants)]
     y = list(map(lambda xi: SECP256k1.generator * xi, x))
 
     message = 1
-    i = 2
+    i = 1
     signature = ring_signature(x[i], i, message, y)
 
-    for i in range(0,number_participants):
-        print (y[i])
-    print (signature)
-    print (signature[2])
+    # for i in range(0,number_participants):
+    #     print ("Private Key=",x[i])
+    #     print ("Public Key=",y[i])
+    print ("Signature=",signature)
+    print ("I=",signature[2])
 
     assert(verify_ring_signature(message, y, *signature))
 

@@ -104,8 +104,9 @@ contract EVoting {
         require(msg.sender == common, "sender is not the common address");
 
         require(LSAG_verify(message, c0, keyImage, s, pub_keys), "lsag verification didn't work"); 
-        require(1==0, "Working till here");
+        
         proposals[bytesToUint(message)-1].voteCount++;
+        
         return proposals[bytesToUint(message)-1].voteCount;
         // Voter storage sender = voters[msg.sender];
         // if (sender.voted || toProposal >= proposals.length) return;
