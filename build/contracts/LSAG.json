@@ -13567,14 +13567,14 @@
     "1571126047153": {
       "events": {},
       "links": {
-        "secp256k1": "0x9a23AcaFAEa540E440A1764e6E236BAA792FAF82"
+        "secp256k1": "0xbA6E63E2678a4EfF615708807047886338D8Ca1b"
       },
-      "address": "0x5c054Ae3300C943B8AeE71F360648a0F3e3cA7d8",
-      "transactionHash": "0xab97b31e46d0a18e05bfc12e2912a9fdaf722de61f8fc04498da0f1655828c11"
+      "address": "0x87D7d04A2B33B221F497F421FACC3B8E8A2a7b53",
+      "transactionHash": "0xad6cfda2554f5e1e5e5605d3ac4de7aa6680c39bb12befe7652035e661dd28e3"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-15T16:42:49.612Z",
+  "updatedAt": "2019-10-15T20:21:15.523Z",
   "devdoc": {
     "methods": {}
   },

@@ -12,6 +12,7 @@ import os
 import hashlib
 import functools
 import ecdsa
+import sys
 
 from ecdsa.util import randrange
 from ecdsa.ecdsa import curve_secp256k1
@@ -294,13 +295,21 @@ def export_signature(y, message, signature, foler_name='./data', file_name='sign
     if not os.path.exists(foler_name):
         os.makedirs(foler_name)
 
+    for k in range(0,len(signature[1])):
+        signature[1][k] = hex(int(signature[1][k]))
+
+    keyimage = [0, 0]
+    keyimage[0] = hex(signature[2].x())
+    keyimage[1] = hex(signature[2].y())
+
     arch = open(os.path.join(foler_name, file_name), 'w')
     S = ''.join(map(lambda x: str(x) + ',', signature[1]))[:-1]
-    Y = stringify_point(signature[2])
+    # Y = stringify_point(signature[2])
+    Y = keyimage
 
     dump = '{}\n'.format("Here is your signature:")
     dump += '{}'.format("c0 = ")
-    dump += '{}\n'.format(signature[0])
+    dump += '{}\n'.format(hex(signature[0]))
     dump += '{}'.format("S array = ")
     dump += '{}\n'.format(S)
     dump += '{}'.format("KeyImage = ")
@@ -363,24 +372,39 @@ def export_signature_javascript(y, message, signature, foler_name='./data', file
 
 
 def main():
-    number_participants = 4
+    number_participants = 5
 
-    # x = [66423199147571491159097558610794523613615815347258629248005690914378515129410,90095073239896489783244129123637431383711813588417303772730231172374353279628]
-    x = [ randrange(SECP256k1.order) for i in range(number_participants)]
+    x = [56121026420206427922036047295033295468704194889942276402384109623365910341114,97148831986497178251981347099741561152929354799719003736306468101246934956731,73582564991556101489090114036789577051420144847960038776033502314051350434733,58959788109781048630827926226104720045842317320518204126269224311951440226761,41745480486210574223547556272772914684478811935146531809992005566760468807878]
+    # x = [ randrange(SECP256k1.order) for i in range(number_participants)]
     y = list(map(lambda xi: SECP256k1.generator * xi, x))
 
-    message = 1
-    i = 1
+    private_key = input("Please enter your private key : ")
+    private_key = int(private_key)
+    
+    i = 0
+    j = 0
+    for k in range(0,number_participants):
+        if private_key == x[k]:
+            i = k   
+            break
+        j += 1
+
+    if j == number_participants:
+        print ("Sorry, wrong private key. Try again")
+        return 0
+
+    message = input("Whom do you want to cast your vote among the 3 proposals? ")
+    message = int(message)
+
+    if message >= 3:
+        print ("Sorry, the proposal doesn't exist")
+        return 0
+
     signature = ring_signature(x[i], i, message, y)
-
-    # for i in range(0,number_participants):
-    #     print ("Private Key=",x[i])
-    #     print ("Public Key=",y[i])
-    # print ("Signature=",signature)
-    # print ("I=",signature[2])
-    export_signature(y, message, signature, './data', 'signature.txt')
-
+    
     assert(verify_ring_signature(message, y, *signature))
+    export_signature(y, message, signature, './data', 'signature.txt')
+    print ("Signature created! Please check data/signature.txt")
 
 if __name__ == '__main__':
     main()
