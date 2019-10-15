@@ -9231,6 +9231,14 @@
     "version": "0.5.8+commit.23d335f2.Emscripten.clang"
   },
   "networks": {
+    "3": {
+      "events": {},
+      "links": {
+        "LSAG": "0x54a521C802455118796B6fa394D7B13A7B29b516"
+      },
+      "address": "0x44e8de824f5532cd594b417eF43974C49A421Ef8",
+      "transactionHash": "0xd6b2bc075309f109e3e39a32bc55579a5b755fb341fdccbd650ae93c87d6a31b"
+    },
     "5777": {
       "events": {},
       "links": {
@@ -9387,14 +9395,14 @@
     "1571126047153": {
       "events": {},
       "links": {
-        "LSAG": "0x87D7d04A2B33B221F497F421FACC3B8E8A2a7b53"
+        "LSAG": "0xe0ea2349210326Da3F1a56daEe9Cf0714eaF99A4"
       },
-      "address": "0x21b724bF193CaFFddc949dCFAA0a15E0665Ae9eE",
-      "transactionHash": "0x6e9ce9c0072ef91202d765db3a0dcbdbb4c6dba21fe53e51f8b70487ac4471e2"
+      "address": "0xb1AD87676408e8993B402b820c79E285EDdb39e1",
+      "transactionHash": "0x8808e0e0ec2f5346e31c08669b6d8a231985203b488ecb3f68425a72f6ecd519"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-15T20:21:15.509Z",
+  "updatedAt": "2019-10-15T23:15:15.107Z",
   "devdoc": {
     "methods": {}
   },
