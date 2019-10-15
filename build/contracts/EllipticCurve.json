@@ -34352,12 +34352,12 @@
     "1571126047153": {
       "events": {},
       "links": {},
-      "address": "0x2e26DeA19c042648d9559e3d31bf84661Bbb2160",
-      "transactionHash": "0x2900276a683d8b83519921101ed67eba1212df7a2b3de3e5709f831b632c99f4"
+      "address": "0x81Dd9D7F3c61D4Cc5afBD92437e9D19D2c0Bb06c",
+      "transactionHash": "0x573f17dfade904612bbd2952a9c7076fd9145eb5e161937106943b11647dce82"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-15T13:02:43.078Z",
+  "updatedAt": "2019-10-15T13:43:40.714Z",
   "devdoc": {
     "author": "Witnet Foundation",
     "details": "Library providing arithmetic operations over elliptic curves.",

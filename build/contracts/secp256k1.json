@@ -6542,14 +6542,14 @@
     "1571126047153": {
       "events": {},
       "links": {
-        "EllipticCurve": "0x2e26DeA19c042648d9559e3d31bf84661Bbb2160"
+        "EllipticCurve": "0x81Dd9D7F3c61D4Cc5afBD92437e9D19D2c0Bb06c"
       },
-      "address": "0x742Be2B0Cd0d6F15E18953924f30Fe014EFf2CcB",
-      "transactionHash": "0xd83b12f3f75fab39a529d5a627c663f4da8e209a8b049af2ed63801cad5aaa2b"
+      "address": "0xd31842a32AcCD075692Fd68b7B4e8C559247bdFa",
+      "transactionHash": "0x549bef41247aa17a2add1c40a45330dcc08c0a46d7806a091d3a97f6a9795fb5"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-15T13:02:43.097Z",
+  "updatedAt": "2019-10-15T13:43:40.730Z",
   "devdoc": {
     "author": "Witnet Foundation",
     "methods": {

@@ -30,70 +30,17 @@ contract("EVoting", async function(accounts){
         it("should add vote for proposal 1", async () => {
             var message = 1;
             var c0 = '0x41541AFB0800B2275136E073EFE69C4BFCCD2FF179BA64C0DC2AB62C1ED78F2C';
-            var keyImage = ['0x77A157DA71D942B634074C7A7679E8AA455FB8150A18287A9F2BB4E6276E7B2B', '0xFA40E7F763B4EF0C900C2D1D13BADFB5C34CE642E30FE6AA482B4B8732A03D5'];
-            var s = ['0xB3194008D5AA4B12DD7AB5EC60CC9A2E92CF8FCF31E8E603A6EB09B3E6A58F73', '0xF479804A7A74EB066CA0FD922091011627231C5A92BBD04A34BCEDBB78B214E2'];
-            var pub_keys = [['0x1B6FB3E77DF2FA724FB0FD3BB38D1F2F125147BBADD6A0675E1E499E885508CE', '0x80D042C3DB0AC4D63457653EA39BCFF18232233E4AF743315811B9E75BCE6808'],['0xC1E0144F13C215619B4D670481454140C2ECC98B55CA3CC73C7A474BFFF9102E', '0x54068EDE35BC3131C01622CDD654CA1A6B6D61CF18D34FE9E1D173FFA0FEFAEF']];
+            var keyImage = ['0xD8FDDC626BB529C6C6CEB75802D19CD35730262AF50DB73BCA66F78EF8BBBEAE', '0x2F94D4F960D49EF829598E2D24417AA51F2543A4DD8A8BE17370C1C7A4CE7DA5'];
+            var s = ['0xA0D282A0F578BDADC738872FA11F27EC33619D79C92FEDDF2214BD7EB3367A7D', '0xAB154449D5F4A1EA821BC8B22E5F098E9A58578A8ACF49DA9812B58E76F9E5B9', '0xF5619A2DABDECA8B1F4C899374A690C954478EB5317212C7662CBC32F8C556ED', '0xA85D7AD78E2CE275D19201EB55FE361843D93B45574DA3F8FDC7B8AEED7AF169'];
+            var pub_keys = [['0xED892629518E597E97118FFB7485BB330A1FBECDAFDDE8F99359FD8BA5F30C0E', '0x20878CA9F945BA3A7ACB2CD1C7432D5D34023E3AE4ADA480E2464DFEF5BEC6A'],['0x1A2614B6AC88513162FBB07D7D13181163402B04C718AF6214F085AFE1423C1E', '0xD76073D05DF7CCE4402A1CF9130FBEE1522D92E95116EEE1714D09558FCB4E98'],['0x932D0294D728ECB87D0936ACF3B09DBE09340C3C1403E5B17888B094450B893B', '0xF1B5CB74F89606122305010AE4C98098B7F4901BB6ADC1484AD2FDAD2A1E627D'],['0xFFDEA02CE11511312DD7EFAD6AC3F761733D0DA281666B6004AADAEF973899C1', '0x97F4C7EC7FBF8D89D10E1080CF6D50599DC95C5E718148D751D34C4DF33D33F7']];
             receipt = await contractInstance.setCommon(accounts[0], {from:accounts[0]});
             console.log("receipt for setting common address : \n", receipt);
-            voteCount = await contractInstance.vote.call((message), '0xB6AC5DE2C57F98D19212EAEFCA1958202DAD986BB8DF19943180AD68823F0949', keyImage, s, pub_keys, {from: accounts[0], gas:80000000000});
-            //var tx = contractInstance.addNewItem(name, price, {from: itemSeller});
-            // console.log(itemID.toNumber())
-            //var res = await contractInstance.getItem.call(itemID.toNumber())
+            voteCount = await contractInstance.vote.call((message), '0x308868B1359F860171DDA961095506BC2A7FFE1F1BA9ED9F2BB556F5CB582018', keyImage, s, pub_keys, {from: accounts[0], gas:80000000000});
     
             assert.equal(voteCount, 1);
-            // assert.equal(price, res["1"].toNumber(), "Price wasn't added properly");
-            // assert.equal(itemSeller, res["2"], "Seller wasn't added properly");
-            // assert.equal(res["3"].toNumber(), 0, "Status wasn't added properly");
     
         
         });
     })
 })
     
-    //     it("should add product 2", async () => {
-    //         var name = "Prod2";
-    //         var price = 100;
-    //         var itemSeller = accounts[0];
-    
-            
-    //         itemID = await contractInstance.addNewItem.call(name, price, {from: itemSeller});
-    //         var tx = contractInstance.addNewItem(name, price, {from: itemSeller});
-    //         // console.log(itemID.toNumber())
-    //         var res = await contractInstance.getItem.call(itemID.toNumber())
-    
-    //         assert.equal(name, res["0"], "Name wasn't added properly");
-    //         assert.equal(price, res["1"].toNumber(), "Price wasn't added properly");
-    //         assert.equal(itemSeller, res["2"], "Seller wasn't added properly");
-    //         assert.equal(res["3"].toNumber(), 0, "Status wasn't added properly");
-    
-        
-    //     });
-    
-    //     it("should remove product 1", async () => {
-    //         itemID = 0;
-    //         var tx = await contractInstance.removeItem(itemID);
-    //         var removedId = tx.receipt.logs[0].args["0"].toNumber()
-    //         assert.equal(removedId, itemID, "Incorrect item removed")
-    //         var res = await contractInstance.getItem.call(itemID)
-    //         assert.equal(res["3"].toNumber(), 2, "Item hasn't been removed correctly");
-    //         // console.log(res);
-    //     });
-    
-    //     it("should buy product 2", async () => {
-    //         itemID = 1;
-    //         var tx = await contractInstance.buyItem(itemID, {from: accounts[1], value: 100});
-    //         var boughtId = tx.receipt.logs[0].args["0"].toNumber()
-    //         assert.equal(boughtId, itemID, "Incorrect item bought")
-    //         var res = await contractInstance.getItem.call(itemID)
-    //         assert.equal(res["3"].toNumber(), 1, "Item hasn't been bought correctly");
-    //     });
-    // })
-
-    // describe("failure states", async () => {
-    //     it("should not remove product 2", async () => {
-    //         itemID = 1;
-    //         await truffleAssert.reverts(contractInstance.removeItem(itemID), "This item has already been purchased or removed");
-    //     });
-    // })
-    
-//});
