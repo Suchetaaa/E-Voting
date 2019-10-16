@@ -9403,14 +9403,14 @@
     "1571201026423": {
       "events": {},
       "links": {
-        "LSAG": "0xa3f7A9DB6F1a5AEDBb795B8598d1F96531816931"
+        "LSAG": "0xD1B54413c596bEc8Be5a12ff732CAC3087001fB7"
       },
-      "address": "0xF123803B060Be17353DBc8eF905CD8dc4Cdae4ba",
-      "transactionHash": "0xde1507b683b6b7cbe135cbec61ceee3b97ab3aa28a7cca2c039233caad5b9a8d"
+      "address": "0xf320EB3e6203772852386E9D9fee751b00192438",
+      "transactionHash": "0x82deec79183e938c0b720cd7293341308dc047977fa8b3736e36aaa40351a3b3"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-16T04:44:17.995Z",
+  "updatedAt": "2019-10-16T06:39:15.509Z",
   "devdoc": {
     "methods": {}
   },

@@ -6558,14 +6558,14 @@
     "1571201026423": {
       "events": {},
       "links": {
-        "EllipticCurve": "0xc536c6e5a2c8B50015c91dbDb5cE4d7C6E68da58"
+        "EllipticCurve": "0xc92Fb3dAC43688AadA7526fd898e1013D99bcEc2"
       },
-      "address": "0x5686F412B7a1cF571c305B8526B1F00B982d951a",
-      "transactionHash": "0x9b620321993afc30085d7c59f4595c9b3f3f9c69ec86ea30b0154ba1e0a792f5"
+      "address": "0x196958529fEB6070441C58c41822E1650241A066",
+      "transactionHash": "0x6ce0b2df60e11009c91d6752e1195a1bbf1ca3ea2c8121d79b27ddf7839d83b2"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-16T04:44:18.066Z",
+  "updatedAt": "2019-10-16T06:39:15.569Z",
   "devdoc": {
     "author": "Witnet Foundation",
     "methods": {
