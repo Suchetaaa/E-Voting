@@ -6390,10 +6390,10 @@
     "3": {
       "events": {},
       "links": {
-        "EllipticCurve": "0x75cDf638eD687850b266C592e68f3b307a1dC7a3"
+        "EllipticCurve": "0xa43A63c57094B5F075BFE47eD5052Fd2f5EFcaD0"
       },
-      "address": "0xaA6CF2994937808867a08Bdc54970665026a194F",
-      "transactionHash": "0xebdc868e04c7ed23b42ea054f6cdb91cdafebfcf137c66146ae991dbbdb83ed5"
+      "address": "0x1d2023ff434AeF0C868087a2EB2f9bA5a848f693",
+      "transactionHash": "0x5dac699a5dc16b36cbe56fe05f5285e0f1bca25f55adcee46bd0f9f8eae49482"
     },
     "5777": {
       "events": {},
@@ -6554,10 +6554,18 @@
       },
       "address": "0xb0AE60BF15b555F6fAEF6DC1946Dc16B17DbDcE9",
       "transactionHash": "0x82244e8bf007745356ff8b427611057a58d7add32878df124f101e3baa7dd84d"
+    },
+    "1571201026423": {
+      "events": {},
+      "links": {
+        "EllipticCurve": "0xc536c6e5a2c8B50015c91dbDb5cE4d7C6E68da58"
+      },
+      "address": "0x5686F412B7a1cF571c305B8526B1F00B982d951a",
+      "transactionHash": "0x9b620321993afc30085d7c59f4595c9b3f3f9c69ec86ea30b0154ba1e0a792f5"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-15T23:20:46.009Z",
+  "updatedAt": "2019-10-16T04:44:18.066Z",
   "devdoc": {
     "author": "Witnet Foundation",
     "methods": {

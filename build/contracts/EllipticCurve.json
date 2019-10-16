@@ -34238,8 +34238,8 @@
     "3": {
       "events": {},
       "links": {},
-      "address": "0x75cDf638eD687850b266C592e68f3b307a1dC7a3",
-      "transactionHash": "0xf07b4574f10bab91e4e38b3b0cffedfbed577cb0e74d9b0fd951379fdfec5ed9"
+      "address": "0xa43A63c57094B5F075BFE47eD5052Fd2f5EFcaD0",
+      "transactionHash": "0xe1234b6043018044fc24e6e9f6501a88438ca684d836a441aa8dc2426ddc1d77"
     },
     "5777": {
       "events": {},
@@ -34360,10 +34360,16 @@
       "links": {},
       "address": "0xF73f7eADE9914c0332a51d0048Da26752e67Efe9",
       "transactionHash": "0x35b391f0e9bd7bc576e3b4ad18d93cbfe7d0c0c9817f72ffe7dcffeb5ee4962b"
+    },
+    "1571201026423": {
+      "events": {},
+      "links": {},
+      "address": "0xc536c6e5a2c8B50015c91dbDb5cE4d7C6E68da58",
+      "transactionHash": "0xeb23a320569211f7e2a754659a7bfc568a5202da274235487cb3bbe490b8c0ae"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-15T23:20:45.995Z",
+  "updatedAt": "2019-10-16T04:44:18.032Z",
   "devdoc": {
     "author": "Witnet Foundation",
     "details": "Library providing arithmetic operations over elliptic curves.",
