@@ -1,10 +1,6 @@
 # Decentralized Electronic Voting System using Linkable Ring Signatures
 
-## Team members: 
-Darshil Desai, 160020018 <br/>
-Sucheta Ravikanti, 160040100
-
-## Project Description:
+## Description:
 This is a decentralized contract that when deployed can be used to perform electronic voting. Anyone can deploy this by giving the public keys of the vote bank as an argument migrations file. <br/> <br/>
 Special features include: <br/> 
 1. **Anonymity** and **authencity** of the voter is ensured. This is done by using **Ring Signatures**. 
